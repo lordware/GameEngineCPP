@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{e181e147-16dc-4808-81fe-eaa304fd5e88}</ProjectGuid>
-    <RootNamespace>GameEngine</RootNamespace>
+    <ProjectGuid>{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}</ProjectGuid>
+    <RootNamespace>Tests</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -69,7 +69,18 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <PropertyGroup Label="UserMacros" />  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <PropertyGroup Label="UserMacros" />  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(SolutionDir)GameEngine;$(SolutionDir)ThirdParty\googletest\googletest\include;$(SolutionDir)ThirdParty\googletest\googletest;$(SolutionDir)ThirdParty\googletest\googlemock\include;$(SolutionDir)ThirdParty\googletest\googlemock;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(SolutionDir)GameEngine;$(SolutionDir)ThirdParty\googletest\googletest\include;$(SolutionDir)ThirdParty\googletest\googletest;$(SolutionDir)ThirdParty\googletest\googlemock\include;$(SolutionDir)ThirdParty\googletest\googlemock;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(SolutionDir)GameEngine;$(SolutionDir)ThirdParty\googletest\googletest\include;$(SolutionDir)ThirdParty\googletest\googletest;$(SolutionDir)ThirdParty\googletest\googlemock\include;$(SolutionDir)ThirdParty\googletest\googlemock;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(SolutionDir)GameEngine;$(SolutionDir)ThirdParty\googletest\googletest\include;$(SolutionDir)ThirdParty\googletest\googletest;$(SolutionDir)ThirdParty\googletest\googlemock\include;$(SolutionDir)ThirdParty\googletest\googlemock;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+  </PropertyGroup><ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
@@ -126,18 +137,19 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>  <ItemGroup>
-    <ClCompile Include="GameEngine.cpp" />
-    <ClCompile Include="Core\Memory\HeapAllocator.cpp" />
-    <ClCompile Include="Core\Memory\PoolAllocator.cpp" />
-    <ClCompile Include="Core\Memory\StackAllocator.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Core\Memory\HeapAllocator.h" />
-    <ClInclude Include="Core\Memory\IAllocator.h" />
-    <ClInclude Include="Core\Memory\PoolAllocator.h" />
-    <ClInclude Include="Core\Memory\StackAllocator.h" />
-  </ItemGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Core\Memory\AllocatorTests.cpp" />
+    <ClCompile Include="..\GameEngine\Core\Memory\HeapAllocator.cpp" />
+    <ClCompile Include="..\GameEngine\Core\Memory\PoolAllocator.cpp" />
+    <ClCompile Include="..\GameEngine\Core\Memory\StackAllocator.cpp" />
+    <ClCompile Include="..\ThirdParty\googletest\googletest\src\gtest-all.cc" />
+    <ClCompile Include="..\ThirdParty\googletest\googlemock\src\gmock-all.cc" />
+  </ItemGroup>  <ItemGroup>
+    <ClInclude Include="..\GameEngine\Core\Memory\HeapAllocator.h" />
+    <ClInclude Include="..\GameEngine\Core\Memory\IAllocator.h" />
+    <ClInclude Include="..\GameEngine\Core\Memory\PoolAllocator.h" />
+    <ClInclude Include="..\GameEngine\Core\Memory\StackAllocator.h" />
+  </ItemGroup>  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
 </Project>
