@@ -4,12 +4,12 @@ project(GameEngineTests)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Find Google Test
-find_package(GTest REQUIRED)
+# Add GoogleTest as subdirectory
+add_subdirectory(ThirdParty/googletest)
 
 # Include directories
 include_directories(${CMAKE_SOURCE_DIR}/GameEngine)
-include_directories(${GTEST_INCLUDE_DIRS})
+include_directories(${CMAKE_SOURCE_DIR}/ThirdParty/googletest/googletest/include)
 
 # Source files for the engine
 set(ENGINE_SOURCES
